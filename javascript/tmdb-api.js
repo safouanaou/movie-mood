@@ -1,15 +1,22 @@
 //update to api read access token for security
 
-const apiKey = "40ce35e2ee1d21b892f695781aeec252";
+const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MGNlMzVlMmVlMWQyMWI4OTJmNjk1NzgxYWVlYzI1MiIsIm5iZiI6MTc0OTEzOTY0OC4yNTEwMDAyLCJzdWIiOiI2ODQxYzBjMDczMzVkMWY3ODBhZDkzMTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.l4anDI48ggmM7QbBSqQSSu1yLtPwDW_y2ojv8Sh1K_M";
 const baseURL = "https://api.themoviedb.org/3";
 
 async function getMovieByMood(...moodWords){
 
+    const options = {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            accept: 'application/json'
+        }
+    }
+
     try {
 
         const keywords = moodWords.map(async word => {
-        const url = `${baseURL}/search/keyword?api_key=${apiKey}&query=${encodeURIComponent(word)}`;
-        const keywordResponse = await fetch(url);
+        const url = `${baseURL}/search/keyword?query=${encodeURIComponent(word)}`;
+        const keywordResponse = await fetch(url, options);
 
         if(!keywordResponse.ok){
             throw new Error(`request failed: ${keywordResponse.status}`);
@@ -26,10 +33,11 @@ async function getMovieByMood(...moodWords){
             if(k.results.length === 0){
                 throw new Error("no matching keyword found")
             }
-            k.results[0].id}).join("|");
+            return k.results[0].id
+        }).join("|");
 
-        const movieUrl = `${baseURL}/discover/movie?api_key=${apiKey}&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords=${encodeURIComponent(keywordIDs)}`;
-        const movieResponse = await fetch(movieUrl);
+        const movieUrl = `${baseURL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords=${encodeURIComponent(keywordIDs)}`;
+        const movieResponse = await fetch(movieUrl, options);
         if(!movieResponse.ok){
             throw new Error(`request failed: ${movieResponse.status}`);
         }
@@ -44,3 +52,5 @@ async function getMovieByMood(...moodWords){
 
     } 
 
+
+console.log(getMovieByMood('evil'))
