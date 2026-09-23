@@ -1,0 +1,58 @@
+.main-container{
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+
+}
+
+.navigation{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0 16px;
+
+
+}
+
+.mood-form{
+    display: flex;
+    justify-content: flex-end;
+    width: min(500px, 100%);
+    height: 48px;
+    padding: 10px 0px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 999px;
+    overflow: hidden;
+
+
+}
+
+#mood-input{
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: #222;
+    padding: 0 18px;
+    border: 0;
+    outline: none;
+   
+}
+
+.mood-form button{
+    background-color: brown;
+    font-weight: 700;
+    color: white;
+    padding: 0 20px;
+    border: none;
+    margin-right: 10px;
+    border-radius: 999px;
+    cursor: pointer;
+
+}
