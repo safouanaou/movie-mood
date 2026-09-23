@@ -1,9 +1,8 @@
-//update to api read access token for security
 
 const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MGNlMzVlMmVlMWQyMWI4OTJmNjk1NzgxYWVlYzI1MiIsIm5iZiI6MTc0OTEzOTY0OC4yNTEwMDAyLCJzdWIiOiI2ODQxYzBjMDczMzVkMWY3ODBhZDkzMTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.l4anDI48ggmM7QbBSqQSSu1yLtPwDW_y2ojv8Sh1K_M";
 const baseURL = "https://api.themoviedb.org/3";
 
-export async function getMovieByMood(...moodWords){
+export async function getMovieByMood(moodWords){
 
     const options = {
         headers: {
@@ -51,5 +50,3 @@ export async function getMovieByMood(...moodWords){
     }
 
     } 
-
-
