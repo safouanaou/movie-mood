@@ -11,14 +11,18 @@ form.addEventListener("submit", async (e) => {
 
     const movieData = await getMovieByMood(inputValue);
 
-    movieData.results.map(movie => {
+    const grid = document.querySelector(".movie-grid");
+    grid.replaceChildren();
+
+
+    movieData.results.forEach(movie => {
         const movieTitle = movie.title;
         const movieDescription = movie.overview;
         const img = movie.backdrop_path;
         movieCard(movieTitle, movieDescription, img)
-    })
+    });
 
-
+    form.reset();
 
 })
 

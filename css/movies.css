@@ -1,62 +1,71 @@
+* { box-sizing: border-box; }
+
 body {
+    min-height: 100vh;
     margin: 0;
+    overflow-x: hidden;
+    background: #090909;
+    color: #f4f1ed;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.main-container{
+.main-container {
     width: 100%;
     min-height: 100vh;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    padding-top: 100px;
-
+    padding: 48px 0 1px;
+    background: radial-gradient(ellipse at 50% 0%, #201a14 0, #0d0c0b 38rem, #090909 75%);
 }
 
-.navigation{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.navigation {
     display: flex;
-    width: 100%;
     justify-content: center;
-    padding: 0 16px;
-
-
+    width: 100%;
+    padding: 0 18px;
 }
 
-.mood-form{
+.mood-form {
     display: flex;
-    justify-content: flex-end;
-    width: min(500px, 100%);
-    height: 48px;
-    padding: 10px 0px;
-    box-sizing: border-box;
-    background-color: #fff;
-    border-radius: 999px;
+    width: min(560px, 100%);
+    height: 52px;
+    padding: 5px;
     overflow: hidden;
-
-
+    background: #f5f1eb;
+    border-radius: 999px;
+    box-shadow: 0 10px 32px rgb(0 0 0 / 32%);
 }
 
-#mood-input{
+#mood-input {
     flex: 1;
     min-width: 0;
     height: 100%;
-    box-sizing: border-box;
-    background-color: transparent;
-    color: #222;
     padding: 0 18px;
+    color: #211d18;
+    background: transparent;
     border: 0;
     outline: none;
-   
+    font: inherit;
 }
 
-.mood-form button{
-    background-color: brown;
-    font-weight: 700;
-    color: white;
-    padding: 0 20px;
-    border: none;
-    margin-right: 10px;
+#mood-input::placeholder { color: #817a71; }
+
+.mood-form button {
+    flex: 0 0 auto;
+    padding: 0 24px;
+    color: #17120d;
+    background: #e5ae68;
+    border: 0;
     border-radius: 999px;
     cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    transition: background-color 160ms ease;
+}
 
+.mood-form button:hover { background: #f0c183; }
+.mood-form button:focus-visible { outline: 3px solid #fff; outline-offset: -4px; }
+
+@media (max-width: 600px) {
+    .main-container { padding-top: 28px; }
+    .mood-form { height: 48px; }
+    .mood-form button { padding: 0 18px; }
 }
