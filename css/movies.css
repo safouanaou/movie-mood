@@ -61,6 +61,18 @@ body {
     transition: background-color 160ms ease;
 }
 
+#loadMore {
+       flex: 0 0 auto;
+    padding: 0 24px;
+    color: #17120d;
+    background: #e5ae68;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+}
+
 .mood-form button:hover { background: #f0c183; }
 .mood-form button:focus-visible { outline: 3px solid #fff; outline-offset: -4px; }
 

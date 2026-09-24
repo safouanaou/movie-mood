@@ -2,7 +2,7 @@
 const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MGNlMzVlMmVlMWQyMWI4OTJmNjk1NzgxYWVlYzI1MiIsIm5iZiI6MTc0OTEzOTY0OC4yNTEwMDAyLCJzdWIiOiI2ODQxYzBjMDczMzVkMWY3ODBhZDkzMTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.l4anDI48ggmM7QbBSqQSSu1yLtPwDW_y2ojv8Sh1K_M";
 const baseURL = "https://api.themoviedb.org/3";
 
-export async function getMovieByMood(moodWords){
+export async function getMovieByMood(moodWords, page=1){
 
     const options = {
         headers: {
@@ -35,7 +35,7 @@ export async function getMovieByMood(moodWords){
             return k.results[0].id
         }).join("|");
 
-        const movieUrl = `${baseURL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords=${encodeURIComponent(keywordIDs)}`;
+        const movieUrl = `${baseURL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_keywords=${encodeURIComponent(keywordIDs)}`;
         const movieResponse = await fetch(movieUrl, options);
         if(!movieResponse.ok){
             throw new Error(`request failed: ${movieResponse.status}`);
